@@ -1,0 +1,24 @@
+.items {
+  list-style-type: none;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  padding: 0px;
+}
+
+.items li {
+  margin: 10px;
+}
+
+.items a:hover {
+  background-color: var(--monzo-green);
+}
+
+.items a,
+.items a:visited {
+  display: block;
+  color: #fff;
+  padding: 24px;
+  background-color: var(--monzo-blue);
+  border-radius: 8px;
+}

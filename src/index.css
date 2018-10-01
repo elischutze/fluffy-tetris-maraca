@@ -1,0 +1,18 @@
+:root {
+  --monzo-navy: #14233c;
+  --monzo-red: #e34b5f;
+  --monzo-yellow: #e7ce9c;
+  --monzo-green: #97baa6;
+  --monzo-blue: #1e7889;
+  /* --hot-coral: ; */
+  --btn-primary-color: #00a0d6;
+  --btn-primary-bgcolor: #00a0d61a;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+  background-color: var(--monzo-navy);
+  color: #fff;
+}

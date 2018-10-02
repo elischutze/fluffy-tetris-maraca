@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import { Route, Switch, Redirect, Link } from 'react-router-dom';
 import './App.styles.css';
-import AppDirectory from './components/Apps/AppDirectory';
+import AppDirectory from './components/Apps/AppsDirectory';
 import Login from './components/Login/Login';
 import { logo } from './utils/helpers';
 import { isLoggedIn } from './utils/storageUtils';

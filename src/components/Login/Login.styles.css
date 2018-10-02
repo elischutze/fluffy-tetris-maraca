@@ -1,3 +1,8 @@
+.login-header {
+  padding: 0px 50px;
+  text-align: center;
+}
+
 .login {
   display: block;
   margin: 0px auto;

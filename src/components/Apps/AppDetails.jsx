@@ -6,25 +6,44 @@ import {
   getJSON,
   logError,
 } from '../../utils/helpers';
+import { Link } from 'react-router-dom';
+import { AppsContext } from './AppsDirectory';
 import './AppPages.styles.css';
 
 const AppDetails = ({ apps, match }) => {
   const id = match && match.params.id;
-  const currentApp = apps && apps[id];
 
-  return !currentApp ? (
-    <span>Sorry! Couldn't find that app.</span>
-  ) : (
-    <Fragment>
-      <div className="app-list-main">
-        <div className="app-list-info">
-          <h1>{currentApp.name}</h1>
-          <sub>Created: {currentApp.created.split('T')[0]}</sub>
-          <img src={currentApp.logo} alt={`{currentApp.name} App Logo`} />
-        </div>
-        <Users id={id} />
-      </div>
-    </Fragment>
+  return (
+    <AppsContext.Consumer>
+      {({ apps }) => {
+        const currentApp = apps && apps[id];
+        return !currentApp ? (
+          <span>Sorry! Couldn't find that app.</span>
+        ) : (
+          <Fragment>
+            <div className="app-list-main">
+              <div className="app-list-info">
+                <h1>{currentApp.name}</h1>
+                <p>Created: {currentApp.created.split('T')[0]}</p>
+                <button className="btn">
+                  <Link to={`${match.url}/edit`}>Edit</Link>
+                </button>
+                <img
+                  src={currentApp.logo}
+                  alt={`{currentApp.name} App Logo`}
+                  // workaround because the image server is driving me nuts
+                  onError={() => {
+                    this.onerror = null;
+                    this.src = 'https://via.placeholder.com/400x400';
+                  }}
+                />
+              </div>
+              <Users id={id} />
+            </div>
+          </Fragment>
+        );
+      }}
+    </AppsContext.Consumer>
   );
 };
 

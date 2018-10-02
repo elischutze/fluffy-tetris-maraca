@@ -11,6 +11,10 @@ export const postJSONOptions = {
   method: 'POST',
   headers: { 'Content-Type': 'application/json' },
 };
+export const putJSONOptions = {
+  method: 'PUT',
+  headers: { 'Content-Type': 'application/json' },
+};
 
 export const toDictionary = list =>
   list &&
@@ -20,17 +24,6 @@ export const toDictionary = list =>
   }, {});
 
 // Assets Helpers
-export const colors = {
-  monzo_navy: '#14233c',
-  monzo_red: '#e34b5f',
-  monzo_yellow: '#e7ce9c',
-  monzo_green: '#97baa6',
-  monzo_blue: '#1e7889',
-  hot_coral: '',
-  btn_primary_color: '#00a0d6',
-  btn_primary_bgcolor: '#00a0d61a',
-};
-
 export const logo = (
   <svg
     xmlns="http://www.w3.org/2000/svg"

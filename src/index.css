@@ -7,15 +7,14 @@
   /* --hot-coral: ; */
   --btn-primary-color: #00a0d6;
   --btn-primary-bgcolor: #00a0d61a;
-  --brand-font-fam: 'MaisonNeue-Book', 'Maison Neue', Helvetica, sans-serif;
-  --title-font-fam: 'avenir-next-bold', Helvetica, sans-serif;
+  --brand-font-fam: 'Maison Neue', Helvetica, sans-serif;
+  --title-font-fam: 'Avenir Next', Helvetica, sans-serif;
 }
 
 body {
   margin: 0;
   padding: 0;
   font-family: var(--brand-font-fam);
-  font-weight: 400;
   background-color: var(--monzo-navy);
   color: #fff;
 }

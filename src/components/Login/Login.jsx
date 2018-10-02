@@ -37,14 +37,14 @@ class Login extends Component {
     })
       .then(getJSON)
       .then(loginResult => {
-        const token = loginResult.accessToken;
+        const accesToken = loginResult.accessToken;
         fetch(`${API_URL}`, {
-          headers: { Authorization: token },
+          headers: { Authorization: accesToken },
         })
           .then(getJSON)
           .then(({ token }) => {
             if (token) {
-              setCookie(USER_AUTH_COOKIE, token, {
+              setCookie(USER_AUTH_COOKIE, accesToken, {
                 expires: token.exp,
               });
             }
@@ -63,7 +63,7 @@ class Login extends Component {
   render() {
     return (
       <Fragment>
-        <h1>Log in</h1>
+        <h1 className="login-header">Log in</h1>
         <form onSubmit={this.submitLogin} className="login">
           <fieldset>
             <label htmlFor="login-email">Email:</label>

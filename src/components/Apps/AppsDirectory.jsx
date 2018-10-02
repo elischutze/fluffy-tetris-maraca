@@ -1,7 +1,8 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component, createContext } from 'react';
 import { Switch, Redirect, withRouter } from 'react-router-dom';
 import { ProtectedRoute } from '../../App';
-import AppList from './AppList';
+import AppList from './AppsList';
+import AppEdit from './AppEdit';
 import AppDetails from './AppDetails';
 import {
   API_URL,
@@ -11,8 +12,17 @@ import {
   getJSON,
 } from '../../utils/helpers';
 
+export const AppsContext = createContext({
+  apps: {},
+  updateApp: () => {},
+});
+
 class AppDirectory extends Component {
-  state = { apps: {}, isLoading: true };
+  constructor(props) {
+    super(props);
+    this.updateApp = this.updateApp.bind(this);
+    this.state = { apps: {}, isLoading: true };
+  }
 
   // TODO Abort fetches on unmount
   componentDidMount() {
@@ -30,31 +40,36 @@ class AppDirectory extends Component {
       });
   }
 
+  updateApp(app) {
+    const id = app.id;
+    this.setState({ apps: { [id]: app, ...this.state.apps } });
+  }
+
   render() {
+    const { updateApp } = this;
     const { match } = this.props;
     const { apps, isLoading } = this.state;
 
     return (
-      <Fragment>
+      <AppsContext.Provider value={{ apps, updateApp }}>
         {isLoading ? (
           <span>LOADING...</span>
         ) : (
           <Switch>
+            <ProtectedRoute exact path={`${match.url}`} component={AppList} />
             <ProtectedRoute
-              exact
-              path={`${match.url}`}
-              component={AppList}
-              apps={apps}
+              path={`${match.url}/:id/edit`}
+              component={AppEdit}
             />
             <ProtectedRoute
+              exact
               path={`${match.url}/:id`}
               component={AppDetails}
-              apps={apps}
             />
             <Redirect to={`${match.url}`} />
           </Switch>
         )}
-      </Fragment>
+      </AppsContext.Provider>
     );
   }
 }

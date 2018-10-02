@@ -1,0 +1,17 @@
+.app-container {
+  padding: 50px;
+}
+
+.logo {
+  display: block;
+  max-width: 72px;
+  position: relative;
+  padding: 10px;
+  margin-bottom: 20px;
+}
+
+.logo svg {
+  position: absolute;
+  width: 100%;
+  height: auto;
+}

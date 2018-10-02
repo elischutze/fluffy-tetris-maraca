@@ -1,0 +1,83 @@
+.items {
+  list-style-type: none;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+
+  padding: 0px;
+}
+
+.items li {
+  margin: 10px;
+  vertical-align: middle;
+  width: 30%;
+  text-align: center;
+  justify-content: space-around;
+}
+
+.items a,
+.items a:visited {
+  display: block;
+  color: #fff;
+  padding: 24px;
+  background-color: var(--monzo-green);
+  border-radius: 8px;
+  min-height: 84px;
+  text-decoration: none;
+  font-size: 1.4rem;
+  overflow-wrap: break-word;
+}
+
+.items a:hover {
+  background-color: #97baa6c4;
+}
+
+.app-list-main {
+  display: flex;
+  flex-direction: row;
+}
+
+.app-list-main img {
+  width: 100%;
+  padding: 5px 0px;
+  border-radius: 8px;
+}
+
+.app-list-info {
+  flex-grow: 1;
+  padding: 0px 40px 0px 0px;
+}
+.app-list-user-container {
+  flex-grow: 2;
+  padding: 0px 20px;
+}
+
+.app-list-users {
+  display: flex;
+  flex-direction: column;
+}
+
+.app-list-users li {
+  text-align: left;
+}
+
+.btn {
+  font-weight: bold;
+  font-size: 18px;
+  color: var(--btn-primary-color);
+  background-color: var(--btn-primary-bgcolor);
+  padding: 20px 28px;
+  border: none;
+  width: auto;
+  border-radius: 8px;
+  margin-right: 12px;
+  cursor: pointer;
+}
+.btn:hover {
+  color: var(--monzo-green);
+}
+
+.btn:disabled {
+  color: #f5f5f55a;
+  background-color: #f5f5f51a;
+}

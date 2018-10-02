@@ -1,28 +1,29 @@
-import React, { Component } from 'react';
-import './App.css';
-import { Route, Switch, Redirect } from 'react-router-dom';
-import AppDirectory from './components/AppDirectory';
-import Login from './components/Login';
-import { USER_AUTH_COOKIE, logo } from './utils/variables';
-import { getCookie } from './utils/storage';
-
-// TODO Update
-export const isLoggedIn = !!getCookie(USER_AUTH_COOKIE);
+import React, { Component, Fragment } from 'react';
+import { Route, Switch, Redirect, Link } from 'react-router-dom';
+import './App.styles.css';
+import AppDirectory from './components/Apps/AppDirectory';
+import Login from './components/Login/Login';
+import { logo } from './utils/helpers';
+import { isLoggedIn } from './utils/storageUtils';
 
 class App extends Component {
   render() {
-    return [
-      <header>
-        <div className="logo">{logo}</div>
-      </header>,
-      <div className="app-container">
-        <Switch>
-          <Redirect exact from="/" to="/apps" />
-          <Route path="/login" component={Login} />
-          <ProtectedRoute path="/apps" component={AppDirectory} />
-        </Switch>
-      </div>,
-    ];
+    return (
+      <Fragment>
+        <header>
+          <Link to="/" className="logo">
+            {logo}
+          </Link>
+        </header>
+        <div className="app-container">
+          <Switch>
+            <Redirect exact from="/" to="/apps" />
+            <Route path="/login" component={Login} />
+            <ProtectedRoute path="/apps" component={AppDirectory} />
+          </Switch>
+        </div>
+      </Fragment>
+    );
   }
 }
 
@@ -30,7 +31,7 @@ export const ProtectedRoute = ({ component: Component, ...routeProps }) => (
   <Route
     {...routeProps}
     render={props =>
-      isLoggedIn ? (
+      isLoggedIn() ? (
         <Component {...{ ...props, ...routeProps }} />
       ) : (
         <Redirect
